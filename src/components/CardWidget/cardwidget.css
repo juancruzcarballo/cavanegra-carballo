@@ -1,0 +1,14 @@
+.card-widget {
+    display: flex;
+    align-items: center;
+}
+
+.card-widget > img {
+    width: 40px;
+    height: 40px;
+}
+
+.card-widget > span {
+ color: aliceblue;
+ font-weight: bolder;
+}
