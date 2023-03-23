@@ -3,14 +3,13 @@ import "./navbar.css";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-
 import Form from 'react-bootstrap/Form';
 
 
 
-function NavBar({changeValue}) {
+function NavBar() {
   return (
     <>
           <Navbar bg="light" variant="light">
@@ -34,13 +33,13 @@ function NavBar({changeValue}) {
       </Navbar>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="/">Home</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="/category/tintos" >Tintos</Nav.Link>
-            <Nav.Link href="/category/blancos">Blancos</Nav.Link>
-            <Nav.Link href="/category/espumantes">Espumantes</Nav.Link>
-            <Nav.Link href="/category/exclusivos">Exclusivos</Nav.Link>
-            <Nav.Link href="#pricing">Contacto</Nav.Link>
+        <Link to={`/`}> <Navbar.Brand>Home</Navbar.Brand></Link>
+          <Nav className="me-auto" style={{color:'black'}}>
+          <Nav.Link>  <Link to={`/category/tintos`} style={{color:'rgb(239, 239, 233)'}}>Tintos</Link></Nav.Link>  
+          <Nav.Link>  <Link to={`/category/blancos`} style={{color:'rgb(239, 239, 233)'}}>Blancos</Link></Nav.Link>  
+          <Nav.Link>  <Link to={`/category/espumantes`} style={{color:'rgb(239, 239, 233)'}}>Espumantes</Link></Nav.Link>  
+          <Nav.Link> <Link to={`/category/exclusivos`} style={{color:'rgb(239, 239, 233)'}}>Exclusivos</Link></Nav.Link>  
+
           </Nav>
         </Container>
       </Navbar>

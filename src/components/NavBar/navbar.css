@@ -19,3 +19,8 @@
     width: 40px;
     height: 40px;
 }
+
+a {
+    color: var(--bs-link-color);
+    text-decoration: none;
+}

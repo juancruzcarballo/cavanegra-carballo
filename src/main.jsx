@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemRoot from './routes/item';
-import Root from './routes/root'
+import Root from './routes/root';
+import ItemDetailContainer from "./components/itemDetailContainer";
 
 
 import {
