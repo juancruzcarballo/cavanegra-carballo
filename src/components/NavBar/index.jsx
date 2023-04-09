@@ -6,12 +6,29 @@ import Navbar from 'react-bootstrap/Navbar';
 import {Link} from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { useEffect, useState } from "react";
 
 
 
 function NavBar() {
+
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 5) setIsScrolling(true);
+      else setIsScrolling(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  
   return (
     <>
+    <div>
           <Navbar bg="light" variant="light">
         <Container>
           <Navbar.Brand href="#home">CAVA NEGRA</Navbar.Brand>
@@ -29,6 +46,7 @@ function NavBar() {
             <Button variant="outline-success">Buscar</Button>
           </Form>
           </Nav>
+          <CardWidget />
         </Container>
       </Navbar>
       <Navbar bg="dark" variant="dark">
@@ -41,10 +59,11 @@ function NavBar() {
           <Nav.Link> <Link to={`/category/exclusivos`} style={{color:'rgb(239, 239, 233)'}}>Exclusivos</Link></Nav.Link>  
 
           </Nav>
+      
         </Container>
       </Navbar>
       <br />
-
+      </div>
 
     </>
   );

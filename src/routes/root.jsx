@@ -1,24 +1,23 @@
 import ItemListContainer from '../components/ItemListContainer';
-import NavBar from '../components/NavBar'
 import { useParams } from 'react-router-dom';
+import { Container } from "react-bootstrap";
+import { CustomProvider } from "../Context";
 
 
 function Root() {
   const params = useParams();
-  const isCategoryRoute =  params.id;
- 
-
+  const isCategoryRoute = Boolean(params.id);
 
   return (
-    <div>
-      <NavBar />
-      <ItemListContainer isCategoryRoute={isCategoryRoute}
-       categoryId={params.id}
-       />
-
-    </div>
+    <CustomProvider>
+      <Container className="route-container">
+        <ItemListContainer
+          isCategoryRoute={isCategoryRoute}
+          categoryId={params.id}
+        />
+      </Container>
+    </CustomProvider>
   );
 }
-
 
 export default Root;

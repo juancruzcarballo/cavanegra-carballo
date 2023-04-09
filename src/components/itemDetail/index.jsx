@@ -1,27 +1,48 @@
-import React, { useState } from "react";
-import Products  from "../../mocks/products";
+import {useContext, useState} from "react";
+import {Button, Container} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import ItemCount from "../ItemCount";
+import { Context } from "../../context";
 
+function ItemDetail({ product }) {
+  const { onAdd } = useContext(Context);
+  const [added, setAdded] = useState(0);
 
-function ItemDetail({product=Products }) {
-
-  const [quantity, setQuantity] = useState(1);
+  function onAddProduct(count) {
+    setAdded(count);
+    onAdd(product, count);
+  }
 
   return (
 
-    <div className="content">
-      <div className="image">
-        <img src={product.image} />
+    <Container>
+    <div className="item-detail-container">
+      <div>
+        <img src={product.image} alt="Product image" />
       </div>
-      <div className="description">
-        <h3 className="title">{product.name} </h3>
+      <div className="product-information">
+        <h1>{product.title}</h1>
         <p>{product.description}</p>
-        <p className="price"> $ {product.price}</p>
+        <span className="product-price">Precio: ${product.price}</span>
+        <br />
+        <span className="product-stock">Stock: {product.stock}</span>
 
+        <div>
+          {added == 0 && (
+            <ItemCount stock={product.stock} onAdd={onAddProduct} />
+          )}
+          <div className="ctas-container">
+            {added >= 1 && (
+              <Link to="/cart">
+                <Button style={{backgroundColor:'black', borderColor:'black'}}>Terminar compra</Button>
+              </Link>
+            )}
+          </div>
         </div>
-      
       </div>
-  
-  );
+    </div>
+  </Container>
+);
 }
 
 export default ItemDetail;
